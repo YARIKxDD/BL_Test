@@ -92,7 +92,7 @@ public class MenuUIManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             MenuButtonController menuButtonController;
-            if (buttonsListT.childCount >= i)
+            if (buttonsListT.childCount > i)
             {
                 menuButtonController = buttonsListT.GetChild(i).GetComponentInChildren<MenuButtonController>();
             }

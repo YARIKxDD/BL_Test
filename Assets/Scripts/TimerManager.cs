@@ -6,24 +6,20 @@ using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour
 {
-    const string KEY_SAVE_DATE = "Date";
-    const string KEY_SAVE_ENABLED = "Is enabled";
-
     public static Action<int> TimerEnded;
     public static Action<TimerData> CurrentTimerUpdated;
 
     [SerializeField] private TimeSetUIManager timeSetUIManager;
     [SerializeField] private MenuUIManager menuUIManager;
     [SerializeField] private AnimationCurve addSecondsCurve;
-    [SerializeField] private int timerCount = 3;
+    [SerializeField, Range(1,9), Min(1)] private int timerCount = 3;
 
     private List<TimerData> timerDatas = new List<TimerData>();
-
     private int currentTimerIndex = -1;
 
     private void OnEnable()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 50;
 
         MenuUIManager.TimerSetStart += OnTimerSetStart;
         TimeSetUIManager.CurrentTimerChangeValuePressed += OnCurrentTimerChangeValuePressed;
